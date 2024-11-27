@@ -1,0 +1,25 @@
+{
+  "name": "advanced-topics-in-web-applications-assignment-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gal-Jacob/AdvancedTopicsInWebApplicationsAssignment1.git"
+  },
+  "author": "gal yaakov and ido sharon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gal-Jacob/AdvancedTopicsInWebApplicationsAssignment1/issues"
+  },
+  "homepage": "https://github.com/Gal-Jacob/AdvancedTopicsInWebApplicationsAssignment1#readme",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3"
+  }
+}
