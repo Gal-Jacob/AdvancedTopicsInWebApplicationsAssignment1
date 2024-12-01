@@ -7,12 +7,12 @@ const router = express.Router();
 // Create: Add a New Post
 router.post('/New', async (req, res) => {
     try {
-        const { title, description } = req.body; //Body Schema
-        if (!title || !description) { //Check if schma is valid
+        const { title, description, senderId } = req.body; //Body Schema
+        if (!title || !description || !senderId) { //Check if schma is valid
             return res.status(400).json({ error: 'title and description are required' });
         }
 
-        const newPost = new PostModel({ title, description });
+        const newPost = new PostModel({ title, description, senderId });
         res.status(201).json(await newPost.save());
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -20,7 +20,7 @@ router.post('/New', async (req, res) => {
 });
 
 // Read: Get All Posts
-router.get('/AllPosts', async (req, res) => {
+router.get('/all', async (req, res) => {
     try {
         const items = await PostModel.find();
         res.json(items);
@@ -42,7 +42,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Read: Get Posts by Sender
-router.get('/?sender=:senderId', async (req, res) => {
+router.get('/senderId/:senderId', async (req, res) => {
     try {
         const Posts = await PostModel.find({senderId: req.params.senderId});
         if (!Posts) {
@@ -71,3 +71,5 @@ router.put('/:id', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+module.exports = router;

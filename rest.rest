@@ -1,0 +1,39 @@
+# Create a new post
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "title": "Sample post",
+    "description": "This is a sample post description",
+    "senderId": "sample sender ID"
+}
+
+###
+
+# Get all posts
+GET http://localhost:3000/posts
+
+###
+
+# Get a single post by ID
+# Replace {id} with an actual ID after creating an post
+GET http://localhost:3000/posts/{id}
+
+# Get a single post by senderID
+# Replace {id} with an actual ID after creating an post
+GET http://localhost:3000/posts/{senderID}
+
+###
+
+# Update an post by ID
+# Replace {id} with an actual ID
+PUT http://localhost:3000/posts/{id}
+Content-Type: application/json
+
+{
+    "title": "Updated post Name",
+    "description": "Updated description for the post",
+    "snederID": "Updated description for the post"
+}
+
+###
