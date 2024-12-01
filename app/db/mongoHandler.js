@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGO_URI='mongodb://localhost:27017/crud_api'  // Replace with your MongoDB URI
+const MONGO_URI='mongodb+srv://galyaakov100:ysJQH2vwmNYIfKzU@assiment1.dksyj.mongodb.net/posts'  // Replace with your MongoDB URI
 
 const connectDB = async () => {
     try {
