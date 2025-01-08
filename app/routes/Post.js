@@ -1,11 +1,10 @@
-const express = require('express');
-const PostModel = require('../db/models/PostModel');
+import express from 'express';
+import PostModel from '../db/models/PostModel.js'
 
-const router = express.Router();
-
+const postRouter = express.Router();
 
 // Create: Add a New Post
-router.post('/New', async (req, res) => {
+postRouter.post('/New', async (req, res) => {
     try {
         const { title, description, senderId } = req.body; //Body Schema
         if (!title || !description || !senderId) { //Check if schma is valid
@@ -20,7 +19,7 @@ router.post('/New', async (req, res) => {
 });
 
 // Read: Get All Posts
-router.get('/all', async (req, res) => {
+postRouter.get('/all', async (req, res) => {
     try {
         const items = await PostModel.find();
         res.json(items);
@@ -29,7 +28,7 @@ router.get('/all', async (req, res) => {
     }});
 
 // Read: Get a Post by ID
-router.get('/:id', async (req, res) => {
+postRouter.get('/:id', async (req, res) => {
     try {
         const post = await PostModel.findById(req.params.id);
         if (!post) {
@@ -42,7 +41,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Read: Get Posts by Sender
-router.get('/senderId/:senderId', async (req, res) => {
+postRouter.get('/senderId/:senderId', async (req, res) => {
     try {
         const Posts = await PostModel.find({senderId: req.params.senderId});
         if (!Posts) {
@@ -55,7 +54,7 @@ router.get('/senderId/:senderId', async (req, res) => {
 });
 
 // Update: Update an item by ID
-router.put('/:id', async (req, res) => {
+postRouter.put('/:id', async (req, res) => {
     try {
         const { name, description } = req.body;
         const updatedItem = await PostModel.findByIdAndUpdate(
@@ -72,4 +71,5 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+
+export default postRouter;

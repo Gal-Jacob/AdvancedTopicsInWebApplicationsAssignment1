@@ -4,14 +4,18 @@
 // 2. Do all test with postman + video.
 // 3. Capture the git 'Network Graph'.
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const connectDB = require('./app/db/mongoHandler');
-const postRoutes = require('./app/routes/Post');
-// const commentsRoutes = require('./app/routes/Comments');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { connectDB } from './app/db/mongoHandler.js';
+import postRouter from './app/routes/Post.js';
+import config from './app/config/config.js';
+import dotenv from 'dotenv'
+
+dotenv.config();
+
+console.log(process.env.MONGO_CONNECTION_STRING)
 
 const app = express();
-const port = 3000;
 
 // Middleware
 app.use(bodyParser.json());
@@ -20,9 +24,9 @@ app.use(bodyParser.json());
 connectDB();
 
 // Routes
-app.use('/Post', postRoutes);
+app.use('/Post', postRouter);
 
 // Start server
-app.listen(port, () => {
-    console.log(`API server running on http://localhost:${port}`);
+app.listen(config().app.appPort, () => {
+    console.log(`API server running on http://localhost:${config().app.appPort}`);
 });
