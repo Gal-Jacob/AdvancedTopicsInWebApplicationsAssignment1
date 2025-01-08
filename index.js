@@ -8,6 +8,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { connectDB } from './app/db/mongoHandler.js';
 import postRouter from './app/routes/Post.js';
+import commentsRouter from './app/routes/Comments.js';
 import config from './app/config/config.js';
 import dotenv from 'dotenv'
 
@@ -25,6 +26,7 @@ connectDB();
 
 // Routes
 app.use('/Post', postRouter);
+app.use('/Comment', commentsRouter);
 
 // Start server
 app.listen(config().app.appPort, () => {
