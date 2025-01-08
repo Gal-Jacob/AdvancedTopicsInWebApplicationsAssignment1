@@ -1,10 +1,9 @@
-const mongoose = require('mongoose');
-
-const MONGO_URI='mongodb+srv://galyaakov100:ysJQH2vwmNYIfKzU@assiment1.dksyj.mongodb.net/posts'  // Replace with your MongoDB URI
+import mongoose from 'mongoose';
+import config from '../config/config';
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+        await mongoose.connect(config().mongo.conncetion_string, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('Connected to MongoDB');
     } catch (error) {
         console.error('MongoDB connection error:', error);
