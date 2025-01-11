@@ -27,7 +27,7 @@ postRouter.get('/all', async (req, res) => {
         res.status(500).json({ error: error.message });
     }});
 
-// Read: Get a Post by ID
+// Read: Get a Comment by ID
 postRouter.get('/:id', async (req, res) => {
     try {
         const post = await CommentsModel.findById(req.params.id);
@@ -40,10 +40,10 @@ postRouter.get('/:id', async (req, res) => {
     }
 });
 
-// Read: Get Posts by Sender
+// Read: Get Comment by Sender
 postRouter.get('/senderId/:senderId', async (req, res) => {
     try {
-        const Posts = await PostModel.find({senderId: req.params.senderId});
+        const Posts = await CommentsModel.find({senderId: req.params.senderId});
         if (!Posts) {
             return res.status(404).json({ error: 'Posts not found' });
         }
@@ -56,10 +56,10 @@ postRouter.get('/senderId/:senderId', async (req, res) => {
 // Update: Update an item by ID
 postRouter.put('/:id', async (req, res) => {
     try {
-        const { name, description } = req.body;
-        const updatedItem = await PostModel.findByIdAndUpdate(
+        const { text } = req.body;
+        const updatedItem = await CommentsModel.findByIdAndUpdate(
             req.params.id,
-            { name, description },
+            { text },
             { new: true, runValidators: true }
         );
         if (!updatedItem) {

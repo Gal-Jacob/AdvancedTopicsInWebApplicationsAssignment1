@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const CommentSchema = new mongoose.Schema({
-    postId: { type: String, required: true }, // The post ID is generate by the mongoDB
+    postId: { type: String, required: true },
     text: { type: String, required: true },
     senderId: { type: String, required: true },
 });
