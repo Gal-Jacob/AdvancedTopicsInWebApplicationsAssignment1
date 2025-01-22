@@ -1,39 +1,62 @@
-# Create a new post
-POST http://localhost:3000/posts
-Content-Type: application/json
+# ----------------------------- Posts Routes -----------------------------
 
+# Create: Add a New Post
+POST http://localhost:3000/posts/New
+Content-Type: application/json
 {
-    "title": "Sample post",
-    "description": "This is a sample post description",
-    "senderId": "sample sender ID"
+  "title": "My First Post",
+  "description": "This is the description of my first post.",
+  "senderId": "12345"
 }
 
-###
+# Read: Get All Posts
+GET http://localhost:3000/posts/all
+Content-Type: application/json
 
-# Get all posts
-GET http://localhost:3000/posts
-
-###
-
-# Get a single post by ID
-# Replace {id} with an actual ID after creating an post
+# Read: Get a Post by ID
 GET http://localhost:3000/posts/{id}
+Content-Type: application/json
 
-# Get a single post by senderID
-# Replace {id} with an actual ID after creating an post
-GET http://localhost:3000/posts/{senderID}
+# Read: Get Posts by Sender
+GET http://localhost:3000/posts/senderId/{senderId}
+Content-Type: application/json
 
-###
 
 # Update a post by ID
 # Replace {id} with an actual ID
 PUT http://localhost:3000/posts/{id}
 Content-Type: application/json
-
 {
-    "title": "Updated post Name",
-    "description": "Updated description for the post",
-    "snederID": "Updated description for the post"
+  "name": "Updated Post Title",
+  "description": "Updated description for the post."
 }
 
-###
+# ---------------------------- Comments Routes ----------------------------
+
+# Create: Add a New Comment
+POST http://localhost:3000/comments/New
+Content-Type: application/json
+{
+  "postId": "60b8d4ff4f1a2c6f8f1f1a12",
+  "text": "This is a comment on the post.",
+  "senderId": "67890"
+}
+
+# Read: Get All Comments
+GET http://localhost:3000/comments/all
+Content-Type: application/json
+
+# Read: Get a Comment by ID
+GET http://localhost:3000/comments/{id}
+Content-Type: application/json
+
+# Read: Get Comments by Sender
+GET http://localhost:3000/comments/senderId/{senderId}
+Content-Type: application/json
+
+# Update: Update a Comment by ID
+PUT http://localhost:3000/comments/{id}
+Content-Type: application/json
+{
+  "text": "Updated comment text."
+}
