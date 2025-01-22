@@ -6,6 +6,6 @@ const CommentSchema = new mongoose.Schema({
     senderId: { type: String, required: true },
 });
 
-const CommentsModel = mongoose.model('Post', CommentSchema);
+const CommentsModel = mongoose.model('Comment', CommentSchema);
 
 export default CommentsModel;

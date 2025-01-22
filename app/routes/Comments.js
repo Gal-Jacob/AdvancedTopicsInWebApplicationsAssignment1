@@ -19,7 +19,7 @@ commentsRouter.post('/New', async (req, res) => {
 });
 
 // Read: Get All Comments
-postRouter.get('/all', async (req, res) => {
+commentsRouter.get('/all', async (req, res) => {
     try {
         const items = await CommentsModel.find();
         res.json(items);
@@ -28,7 +28,7 @@ postRouter.get('/all', async (req, res) => {
     }});
 
 // Read: Get a Comment by ID
-postRouter.get('/:id', async (req, res) => {
+commentsRouter.get('/:id', async (req, res) => {
     try {
         const post = await CommentsModel.findById(req.params.id);
         if (!post) {
@@ -41,7 +41,7 @@ postRouter.get('/:id', async (req, res) => {
 });
 
 // Read: Get Comment by Sender
-postRouter.get('/senderId/:senderId', async (req, res) => {
+commentsRouter.get('/senderId/:senderId', async (req, res) => {
     try {
         const Posts = await CommentsModel.find({senderId: req.params.senderId});
         if (!Posts) {
@@ -54,7 +54,7 @@ postRouter.get('/senderId/:senderId', async (req, res) => {
 });
 
 // Update: Update an item by ID
-postRouter.put('/:id', async (req, res) => {
+commentsRouter.put('/:id', async (req, res) => {
     try {
         const { text } = req.body;
         const updatedItem = await CommentsModel.findByIdAndUpdate(
